@@ -5,39 +5,39 @@ const path = require('path')
 const server = http.createServer((req, res) => {
     if (req.method === "GET") {
         res.writeHead(200, {
-            'Content-Type': 'text/html; charset: utf-8'
+            'Content-Type': 'text/html; charset=utf-8'
         })
         if (req.url === '/') {
             fs.readFile(path.join(__dirname, 'views', 'index.html'),
-            'utf-8',
-            (err, content) => {
-                if (err) throw err
-                res.end(content)
-            })
+                'utf-8',
+                (err, content) => {
+                    if (err) throw err
+                    res.end(content)
+                })
         } else if (req.url === '/about') {
             fs.readFile(path.join(__dirname, 'views', 'about.html'),
-            'utf-8',
-            (err, content) => {
-                if (err) throw err
-                res.end(content)
-            })
+                'utf-8',
+                (err, content) => {
+                    if (err) throw err
+                    res.end(content)
+                })
         } else if (req.url === '/api/users') {
             res.writeHead(200, {
-                'Content-Type': 'text/json'
+                'Content-Type': 'application/json'
             })
             const users = [
-                {name: 'dmitrii', age: 20},
-                {name: 'alex', age: 19}
+                { name: 'dmitrii', age: 20 },
+                { name: 'alex', age: 19 }
             ]
             res.end(JSON.stringify(users))
         } else if (req.url === '/api/quiz') {
             res.writeHead(200, {
-                'Content-Type': 'text/json'
+                'Content-Type': 'application/json; charset=utf-8'
             })
             const quiz = [
                 {
                     name: 'top_250_films',
-                    en: 'top 250 films', 
+                    en: 'top 250 films',
                     ru: '250 лучших фильмов',
                     type: 'films',
                     src: 'https://st.kp.yandex.net/im/kadr/3/1/1/kinopoisk.ru-Vikings-3111254.jpg',
@@ -56,7 +56,7 @@ const server = http.createServer((req, res) => {
                 },
                 {
                     name: 'science_fiction_series',
-                    en: 'science fiction series', 
+                    en: 'science fiction series',
                     ru: 'фантастические сериалы',
                     type: 'serials',
                     src: 'https://st.kp.yandex.net/im/kadr/2/8/9/kinopoisk.ru-The-Expanse-2891914.jpg',
@@ -115,7 +115,7 @@ const server = http.createServer((req, res) => {
                 },
                 {
                     name: 'films_about_space',
-                    en: 'films about space', 
+                    en: 'films about space',
                     ru: 'фильмы о космосе',
                     type: 'films',
                     src: 'https://st.kp.yandex.net/im/kadr/2/5/2/kinopoisk.ru-Interstellar-2529850.jpg',
@@ -174,7 +174,7 @@ const server = http.createServer((req, res) => {
                 },
                 {
                     name: 'disaster_films',
-                    en: 'disaster films', 
+                    en: 'disaster films',
                     ru: 'фильмы катастрофы',
                     type: 'films',
                     src: 'https://st.kp.yandex.net/im/kadr/4/1/0/kinopoisk.ru-The-Day-After-Tomorrow-41064.jpg',
@@ -238,8 +238,8 @@ const server = http.createServer((req, res) => {
             body.push(Buffer.from(data))
         })
         req.on('end', () => {
-           const message = body.toString().split('=')[1]
-           res.end(`
+            const message = body.toString().split('=')[1]
+            res.end(`
            <h1>мое сообщение: ${message}</h1>
        `)
         })
