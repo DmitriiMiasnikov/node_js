@@ -163,3 +163,74 @@
 //     } else return false
 //   }
 //   console.log(equil('acc', 'cba'))
+
+
+const text = '2*(3+(4*5+2))+(3+5)';
+const equition = (str) => {
+    let result = str;
+    result = result.split('');
+    for (let i = 0; i < result.length; i++) {
+        if (isFinite(result[i]) && isFinite(result[i - 1])) {
+            result[i] = result[i - 1] + result[i]
+            result.splice(i - 1, 1)
+            i = i - 1
+        }
+    }
+    const multiplication = (i) => {
+        if (result[i] === '*') {
+            result.splice(i - 1, 3, Number(result[i - 1]) * Number(result[i + 1]))
+            i = i - 1
+        }
+        if (result[i] === '/') {
+            result.splice(i - 1, 3, Number(result[i - 1]) / Number(result[i + 1]))
+            i = i - 1
+        }
+    }
+    const addition = (i) => {
+        if (result[i] === '+') {
+            result.splice(i - 1, 3, Number(result[i - 1]) + Number(result[i + 1]))
+            i = i - 1
+        }
+        if (result[i] === '-') {
+            result.splice(i - 1, 3, Number(result[i - 1]) - Number(result[i + 1]))
+            i = i - 1
+        }
+    }
+    while (result.filter(el => el === '(').length > 0) {
+        let startIndex = result.indexOf('(');
+        let endIndex = result.indexOf(')');
+        for (let i = startIndex + 1; i < endIndex - 1; i++) {
+            if (result[i] === '(') {
+                startIndex = i
+            }
+        }
+        console.log(result.join(' '), 'indexes', startIndex, endIndex)
+        for (let i = startIndex; i < endIndex - 1; i++) {
+            multiplication(i)
+        }
+        for (let i = startIndex; i < endIndex - 1; i++) {
+            addition(i)
+        }
+        startIndex = result.indexOf('(');
+        endIndex = result.indexOf(')');
+        for (let i = startIndex + 1; i < endIndex - 1; i++) {
+            if (result[i] === '(') {
+                startIndex = i
+            }
+        }
+        console.log(result.join(' '), 'indexes', startIndex, endIndex, ' before remove')
+        // console.log('end',result, result[endIndex])
+        result.splice(endIndex, 1)
+        // console.log('start', result, result[startIndex])
+        result.splice(startIndex, 1)
+        console.log(result.join(' '), 'end result' )
+    }
+    for (let i = 0; i < result.length; i++) {
+        multiplication(i)
+    }
+    for (let i = 0; i < result.length; i++) {
+        addition(i)
+    }
+    return result[0]
+}
+console.log(equition(text));
