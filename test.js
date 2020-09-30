@@ -165,7 +165,7 @@
 //   console.log(equil('acc', 'cba'))
 
 
-const text = '2*(3+(4*5+2))+(3+5)';
+const text = '2*(3+(4*5+2))+(2+3+5+3*2)';
 const equition = (str) => {
     let result = str;
     result = result.split('');
@@ -199,37 +199,34 @@ const equition = (str) => {
     while (result.filter(el => el === '(').length > 0) {
         let startIndex = result.indexOf('(');
         let endIndex = result.indexOf(')');
-        for (let i = startIndex + 1; i < endIndex - 1; i++) {
-            if (result[i] === '(') {
-                startIndex = i
+        const findIndexes = () => {
+            startIndex = result.indexOf('(');
+            endIndex = result.indexOf(')');
+            for (let i = startIndex + 1; i < endIndex - 1; i++) {
+                if (result[i] === '(') {
+                    startIndex = i
+                }
             }
         }
-        console.log(result.join(' '), 'indexes', startIndex, endIndex)
+        findIndexes()
         for (let i = startIndex; i < endIndex - 1; i++) {
             multiplication(i)
         }
+        findIndexes()
         for (let i = startIndex; i < endIndex - 1; i++) {
             addition(i)
         }
-        startIndex = result.indexOf('(');
-        endIndex = result.indexOf(')');
-        for (let i = startIndex + 1; i < endIndex - 1; i++) {
-            if (result[i] === '(') {
-                startIndex = i
-            }
-        }
-        console.log(result.join(' '), 'indexes', startIndex, endIndex, ' before remove')
-        // console.log('end',result, result[endIndex])
+        findIndexes()
         result.splice(endIndex, 1)
-        // console.log('start', result, result[startIndex])
         result.splice(startIndex, 1)
-        console.log(result.join(' '), 'end result' )
     }
-    for (let i = 0; i < result.length; i++) {
-        multiplication(i)
-    }
-    for (let i = 0; i < result.length; i++) {
-        addition(i)
+    while (result.filter(el => el === '+' || el === '-' || el === '*' || el === '/').length > 0) {
+        for (let i = 0; i < result.length; i++) {
+            multiplication(i)
+        }
+        for (let i = 0; i < result.length; i++) {
+            addition(i)
+        }
     }
     return result[0]
 }
