@@ -165,8 +165,8 @@
 //   console.log(equil('acc', 'cba'))
 
 
-const text = '2*(3+(4*5+2))+(2+3+5+3*2)';
-const equition = (str) => {
+const text = '2*(3+(4*5+2))+(2+3+((5+3)*2)))';
+const equation = (str) => {
     let result = str;
     result = result.split('');
     for (let i = 0; i < result.length; i++) {
@@ -230,4 +230,4 @@ const equition = (str) => {
     }
     return result[0]
 }
-console.log(equition(text));
+console.log(equation(text));
