@@ -165,69 +165,70 @@
 //   console.log(equil('acc', 'cba'))
 
 
-const text = '2*(3+(4*5+2))+(2+3+((5+3)*2)))';
-const equation = (str) => {
-    let result = str;
-    result = result.split('');
-    for (let i = 0; i < result.length; i++) {
-        if (isFinite(result[i]) && isFinite(result[i - 1])) {
-            result[i] = result[i - 1] + result[i]
-            result.splice(i - 1, 1)
-            i = i - 1
-        }
-    }
-    const multiplication = (i) => {
-        if (result[i] === '*') {
-            result.splice(i - 1, 3, Number(result[i - 1]) * Number(result[i + 1]))
-            i = i - 1
-        }
-        if (result[i] === '/') {
-            result.splice(i - 1, 3, Number(result[i - 1]) / Number(result[i + 1]))
-            i = i - 1
-        }
-    }
-    const addition = (i) => {
-        if (result[i] === '+') {
-            result.splice(i - 1, 3, Number(result[i - 1]) + Number(result[i + 1]))
-            i = i - 1
-        }
-        if (result[i] === '-') {
-            result.splice(i - 1, 3, Number(result[i - 1]) - Number(result[i + 1]))
-            i = i - 1
-        }
-    }
-    while (result.filter(el => el === '(').length > 0) {
-        let startIndex = result.indexOf('(');
-        let endIndex = result.indexOf(')');
-        const findIndexes = () => {
-            startIndex = result.indexOf('(');
-            endIndex = result.indexOf(')');
-            for (let i = startIndex + 1; i < endIndex - 1; i++) {
-                if (result[i] === '(') {
-                    startIndex = i
-                }
-            }
-        }
-        findIndexes()
-        for (let i = startIndex; i < endIndex - 1; i++) {
-            multiplication(i)
-        }
-        findIndexes()
-        for (let i = startIndex; i < endIndex - 1; i++) {
-            addition(i)
-        }
-        findIndexes()
-        result.splice(endIndex, 1)
-        result.splice(startIndex, 1)
-    }
-    while (result.filter(el => el === '+' || el === '-' || el === '*' || el === '/').length > 0) {
-        for (let i = 0; i < result.length; i++) {
-            multiplication(i)
-        }
-        for (let i = 0; i < result.length; i++) {
-            addition(i)
-        }
-    }
-    return result[0]
-}
-console.log(equation(text));
+// calculator + - * /
+// const text = '2*(3+(4*5+2))+(2+3+((5+3)*2)))';
+// const equation = (str) => {
+//     let result = str;
+//     result = result.split('');
+//     for (let i = 0; i < result.length; i++) {
+//         if (isFinite(result[i]) && isFinite(result[i - 1])) {
+//             result[i] = result[i - 1] + result[i]
+//             result.splice(i - 1, 1)
+//             i = i - 1
+//         }
+//     }
+//     const multiplication = (i) => {
+//         if (result[i] === '*') {
+//             result.splice(i - 1, 3, Number(result[i - 1]) * Number(result[i + 1]))
+//             i = i - 1
+//         }
+//         if (result[i] === '/') {
+//             result.splice(i - 1, 3, Number(result[i - 1]) / Number(result[i + 1]))
+//             i = i - 1
+//         }
+//     }
+//     const addition = (i) => {
+//         if (result[i] === '+') {
+//             result.splice(i - 1, 3, Number(result[i - 1]) + Number(result[i + 1]))
+//             i = i - 1
+//         }
+//         if (result[i] === '-') {
+//             result.splice(i - 1, 3, Number(result[i - 1]) - Number(result[i + 1]))
+//             i = i - 1
+//         }
+//     }
+//     while (result.filter(el => el === '(').length > 0) {
+//         let startIndex = result.indexOf('(');
+//         let endIndex = result.indexOf(')');
+//         const findIndexes = () => {
+//             startIndex = result.indexOf('(');
+//             endIndex = result.indexOf(')');
+//             for (let i = startIndex + 1; i < endIndex - 1; i++) {
+//                 if (result[i] === '(') {
+//                     startIndex = i
+//                 }
+//             }
+//         }
+//         findIndexes()
+//         for (let i = startIndex; i < endIndex - 1; i++) {
+//             multiplication(i)
+//         }
+//         findIndexes()
+//         for (let i = startIndex; i < endIndex - 1; i++) {
+//             addition(i)
+//         }
+//         findIndexes()
+//         result.splice(endIndex, 1)
+//         result.splice(startIndex, 1)
+//     }
+//     while (result.filter(el => el === '+' || el === '-' || el === '*' || el === '/').length > 0) {
+//         for (let i = 0; i < result.length; i++) {
+//             multiplication(i)
+//         }
+//         for (let i = 0; i < result.length; i++) {
+//             addition(i)
+//         }
+//     }
+//     return result[0]
+// }
+// console.log(equation(text));
