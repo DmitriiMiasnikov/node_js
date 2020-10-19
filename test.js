@@ -232,3 +232,20 @@
 //     return result[0]
 // }
 // console.log(equation(text));
+
+// Rest
+// const average = (...args) => {
+//     return args.reduce((acc, i) => acc += i, 0) / args.length
+// }
+// console.log(average(10, 20, 30, 40));
+
+// Spread
+// const arr = [1,2,3,4,5];
+// console.log(arr);
+// console.log(...arr);
+// console.log(Math.max(...arr));
+
+// Destructuring
+// const arr = [1, 2, 3, 4, 5];
+// const [a, , b] = arr;
+// console.log(a, b)
