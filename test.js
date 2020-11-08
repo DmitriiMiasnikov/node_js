@@ -249,3 +249,16 @@
 // const arr = [1, 2, 3, 4, 5];
 // const [a, , b] = arr;
 // console.log(a, b)
+
+// const fibNumbers = [];
+// const fib = (int) => {
+//   if (int <= 1) {
+//     fibNumbers.push(int)
+//   } else {
+//     fibNumbers.push(fibNumbers[int - 1] + fibNumbers[int - 2])
+//   }
+//   return fibNumbers[fibNumbers.length - 1]
+// }
+// for(let i = 0; i <= 100; i++) {
+//   console.log(i, ' : ',fib(i))
+// }
