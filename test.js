@@ -132,7 +132,7 @@
 // let result = [];
 // for (var i = 0; i < 5; i ++) {
 //     (() => {
-//         var j = i
+//         const j = i
 //         result.push(() => console.log(j))
 //     })()
 // }
@@ -262,3 +262,33 @@
 // for(let i = 0; i <= 100; i++) {
 //   console.log(i, ' : ',fib(i))
 // }
+
+// const func = (a, b) => {
+//   return a + b
+// }
+
+// console.log(func(1, 2))
+
+// function a() { console.log(this); }
+// a.bind({a: 1});
+// a();
+
+// new Promise((resolve, reject) => {
+//   console.log('Initial');
+
+//   resolve();
+// })
+//   .then((RES, rej) => {
+//     throw new Error('Something failed');
+
+//     console.log('Do this');
+//   })
+//   .catch(() => {
+//     console.log('Do that');
+//   })
+//   .then(() => {
+//     console.log('Will it be printed?');
+//   })
+// 	.catch(() => {
+//     console.log('Do that 2');
+//   })
