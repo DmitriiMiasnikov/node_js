@@ -292,3 +292,24 @@
 // 	.catch(() => {
 //     console.log('Do that 2');
 //   })
+
+// const func = (a,b) => {
+//   return b - a
+// }
+// console.log(func(1,3));
+
+
+const f = (x) => {
+  return 1 / (1 + x * x)
+}
+
+const integrate = (a, b, h) => {
+  let sum = 0;
+  while (a < b) {
+    a += h;
+    sum += h * f(a);
+  }
+  return sum
+}
+
+console.log(integrate(0, 1, 0.00001) * 4);
