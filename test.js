@@ -313,3 +313,16 @@
 // }
 
 // console.log(integrate(0, 1, 0.00001) * 4);
+
+// let b = [1, 2];
+// let c = [1, 2, 3];
+// console.log(b, c);
+// const func = (a, b) => {
+//   if (a.length === b.length) {
+//     a.map((el, i) => {
+//       if (el !== b[i]) return false
+//     })
+//     return true
+//   } else return false
+// }
+// console.log(func(b,c));
