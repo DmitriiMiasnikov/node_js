@@ -326,3 +326,39 @@
 //   } else return false
 // }
 // console.log(func(b,c));
+
+
+// // rock, scissor, paper
+// const game1 = [
+//   ['R', 'P', 'P', 'R'],
+//   ['P', 'R', 'P', 'S']
+// ]
+// const gameFunc = (game) => {
+//   const obj = {
+//     'Anton': 0,
+//     'Natasha': 0
+//   }
+//   const rules = (a, b) => {
+//     if ((a === 'R' && b === 'P') || (a === 'S' && b === 'R') || (a === 'P' && b === 'S')) {
+//       return false
+//     } else {
+//       return true
+//     }
+//   }
+//   game[0].forEach((el, i) => {
+//     if (el !== game[1][i]) {
+//       if (rules(el, game[1][i])) {
+//         obj['Anton'] += 1;
+//       } else obj['Natasha'] += 1;
+//     }
+//   })
+//   if (obj['Anton'] === obj['Natasha']) {
+//     return 'Tie'
+//   } else if (obj['Anton'] > obj['Natasha']) {
+//     return 'Anton'
+//   } else {
+//     return 'Natasha'
+//   }
+// }
+
+// console.log(gameFunc(game1));
